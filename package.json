@@ -1,0 +1,9 @@
+{
+  "name": "wedding-invitation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wedding invitation with RSVP forwarding to WhatsApp",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

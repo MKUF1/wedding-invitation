@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groom & Bride | Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #9caf9a;
+            --mist: #bfcfc3;
+            --ivory: #f4f1ea;
+            --leaf: #7fbf7a;
+            --forest: #2f4a3e;
+            --white: rgba(255, 255, 255, 0.7);
+            --line: rgba(47, 74, 62, 0.14);
+            --shadow: 0 24px 70px rgba(47, 74, 62, 0.16);
+            --romantic: "Great Vibes", cursive;
+            --serif: "Cormorant Garamond", serif;
+            --custom-bg-image: none;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: var(--serif);
+            color: var(--forest);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 18px;
+            overflow-x: hidden;
+            background:
+                linear-gradient(rgba(244, 241, 234, 0.88), rgba(244, 241, 234, 0.88)),
+                radial-gradient(circle at 20% 15%, rgba(156, 175, 154, 0.28), transparent 22%),
+                radial-gradient(circle at 80% 20%, rgba(191, 207, 195, 0.45), transparent 20%),
+                radial-gradient(circle at 70% 80%, rgba(127, 191, 122, 0.16), transparent 22%),
+                linear-gradient(135deg, #f7f4ee 0%, #eef2eb 45%, #edf0e8 100%),
+                var(--custom-bg-image);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        body::before {
+            background:
+                linear-gradient(120deg, transparent 0%, rgba(191, 207, 195, 0.3) 40%, transparent 100%),
+                linear-gradient(30deg, transparent 0%, rgba(156, 175, 154, 0.12) 50%, transparent 100%);
+            opacity: 0.7;
+        }
+
+        body::after {
+            background:
+                radial-gradient(circle at 16% 24%, rgba(255, 255, 255, 0.75), transparent 18%),
+                radial-gradient(circle at 86% 16%, rgba(191, 207, 195, 0.35), transparent 18%);
+            opacity: 0.9;
+        }
+
+        .effect-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 30;
+        }
+
+        .shell {
+            position: relative;
+            width: min(100%, 1020px);
+            border-radius: 34px;
+            background: rgba(255, 255, 255, 0.46);
+            border: 1px solid rgba(47, 74, 62, 0.1);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+        }
+
+        .shell::before {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border: 1px solid rgba(47, 74, 62, 0.08);
+            border-radius: 24px;
+            pointer-events: none;
+        }
+
+        .page {
+            display: none;
+            min-height: 760px;
+            padding: 40px 34px;
+            position: relative;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeLift 600ms ease;
+        }
+
+        .center-stack {
+            min-height: 680px;
+            display: grid;
+            align-content: center;
+            gap: 28px;
+        }
+
+        .eyebrow {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            color: var(--sage);
+            font-size: 0.8rem;
+        }
+
+        .ornament {
+            width: 110px;
+            height: 1px;
+            margin: 0 auto 14px;
+            background: linear-gradient(90deg, transparent, var(--forest), transparent);
+            position: relative;
+        }
+
+        .ornament::before,
+        .ornament::after {
+            content: "";
+            position: absolute;
+            top: -4px;
+            width: 9px;
+            height: 9px;
+            border: 1px solid var(--forest);
+            transform: rotate(45deg);
+        }
+
+        .ornament::before {
+            left: 22px;
+        }
+
+        .ornament::after {
+            right: 22px;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: clamp(3.1rem, 9vw, 5.8rem);
+            color: var(--forest);
+            font-weight: 600;
+            line-height: 0.98;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            color: var(--forest);
+            font-weight: 600;
+        }
+
+        .romantic {
+            font-family: var(--romantic);
+            font-weight: 400;
+            color: var(--leaf);
+        }
+
+        .subline,
+        .description,
+        .supporting,
+        .fine-note {
+            text-align: center;
+            color: var(--forest);
+        }
+
+        .subline {
+            font-size: 1.1rem;
+            letter-spacing: 0.06em;
+        }
+
+        .description,
+        .supporting {
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.16rem;
+        }
+
+        .fine-note {
+            font-size: 0.94rem;
+            color: rgba(47, 74, 62, 0.72);
+        }
+
+        .hero {
+            min-height: 680px;
+            display: grid;
+            align-content: center;
+            gap: 26px;
+        }
+
+        .couple-signature {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            align-items: center;
+            gap: 18px;
+            margin: 0 auto;
+            width: min(100%, 860px);
+        }
+
+        .signature-side {
+            display: grid;
+            gap: 14px;
+            width: 100%;
+        }
+
+        .signature-name {
+            font-family: var(--romantic);
+            font-size: clamp(3rem, 9vw, 5.5rem);
+            line-height: 0.95;
+            color: var(--forest);
+        }
+
+        .signature-side.left {
+            justify-items: center;
+            text-align: center;
+        }
+
+        .signature-side.right {
+            justify-items: center;
+            text-align: center;
+        }
+
+        .signature-rule {
+            width: min(100%, 280px);
+            height: 2px;
+            background: linear-gradient(90deg, rgba(47, 74, 62, 0.1), rgba(47, 74, 62, 0.7), rgba(47, 74, 62, 0.1));
+            border-radius: 999px;
+        }
+
+        .signature-rule.short {
+            width: min(100%, 180px);
+            opacity: 0.75;
+        }
+
+        .signature-family {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(47, 74, 62, 0.82);
+            max-width: 280px;
+            text-align: center;
+        }
+
+        .heart-stack {
+            display: grid;
+            justify-items: center;
+            gap: 18px;
+        }
+
+        .heart-stack::before,
+        .heart-stack::after {
+            content: "";
+            width: 2px;
+            height: 92px;
+            background: linear-gradient(180deg, transparent, rgba(47, 74, 62, 0.5), transparent);
+        }
+
+        .heart {
+            color: var(--leaf);
+            font-size: 2.2rem;
+            transform: translateY(-2px);
+        }
+
+        .detail-card,
+        .countdown-card,
+        .summary-card {
+            background: rgba(255, 255, 255, 0.68);
+            border: 1px solid rgba(47, 74, 62, 0.1);
+            box-shadow: 0 14px 36px rgba(47, 74, 62, 0.08);
+            border-radius: 24px;
+        }
+
+        .detail-grid,
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .detail-card {
+            padding: 18px;
+            text-align: center;
+        }
+
+        .detail-label {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.72rem;
+            color: var(--sage);
+            margin-bottom: 10px;
+        }
+
+        .detail-value {
+            line-height: 1.7;
+            font-size: 1.12rem;
+        }
+
+        .countdown-card {
+            padding: 18px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            display: block;
+            font-size: clamp(2.2rem, 6vw, 3.4rem);
+            color: var(--forest);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 0.78rem;
+            color: var(--sage);
+            margin-top: 10px;
+        }
+
+        .actions {
+            display: grid;
+            gap: 14px;
+        }
+
+        .two-col {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .btn {
+            appearance: none;
+            border-radius: 999px;
+            padding: 16px 22px;
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-open {
+            background: linear-gradient(180deg, var(--leaf), #6aa866);
+            color: white;
+            border: 1px solid rgba(47, 74, 62, 0.12);
+            box-shadow: 0 18px 34px rgba(127, 191, 122, 0.32);
+        }
+
+        .btn-attend,
+        .btn-decline,
+        .btn-ghost,
+        .btn-map {
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(47, 74, 62, 0.12);
+            box-shadow: 0 14px 28px rgba(47, 74, 62, 0.08);
+        }
+
+        .btn-attend {
+            color: var(--leaf);
+        }
+
+        .btn-decline {
+            color: #b05f5f;
+        }
+
+        .btn-confirm {
+            background: linear-gradient(180deg, var(--forest), #23392f);
+            color: white;
+            border: 1px solid rgba(47, 74, 62, 0.2);
+            box-shadow: 0 18px 34px rgba(47, 74, 62, 0.24);
+        }
+
+        .btn-ghost,
+        .btn-map {
+            color: var(--forest);
+        }
+
+        .tulip-stage {
+            display: grid;
+            justify-items: center;
+            gap: 24px;
+        }
+
+        .tulip-wrap {
+            position: relative;
+            width: min(82vw, 320px);
+            height: 360px;
+        }
+
+        .stem {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 10px;
+            height: 180px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, var(--leaf), var(--forest));
+            border-radius: 999px;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 94px;
+            height: 54px;
+            background: linear-gradient(180deg, var(--leaf), #5e955b);
+            border-radius: 100% 0 100% 0;
+            bottom: 82px;
+        }
+
+        .leaf.left {
+            left: calc(50% - 90px);
+            transform: rotate(-28deg);
+        }
+
+        .leaf.right {
+            right: calc(50% - 90px);
+            transform: scaleX(-1) rotate(-28deg);
+        }
+
+        .bud {
+            position: absolute;
+            left: 50%;
+            top: 48px;
+            width: 180px;
+            height: 180px;
+            transform: translateX(-50%);
+        }
+
+        .petal {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform-origin: bottom center;
+            border-radius: 70% 70% 20% 20%;
+            background: linear-gradient(180deg, var(--mist), var(--sage));
+            box-shadow: inset 0 10px 18px rgba(255, 255, 255, 0.26);
+            transition: transform 900ms ease, opacity 900ms ease;
+        }
+
+        .petal.center {
+            width: 92px;
+            height: 128px;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+
+        .petal.left {
+            width: 78px;
+            height: 118px;
+            transform: translateX(-86%) rotate(-28deg);
+            z-index: 2;
+        }
+
+        .petal.right {
+            width: 78px;
+            height: 118px;
+            transform: translateX(-14%) rotate(28deg);
+            z-index: 2;
+        }
+
+        .petal.back-left,
+        .petal.back-right {
+            width: 68px;
+            height: 102px;
+            background: linear-gradient(180deg, #d5dfd7, var(--mist));
+            z-index: 1;
+        }
+
+        .petal.back-left {
+            transform: translateX(-108%) rotate(-42deg);
+        }
+
+        .petal.back-right {
+            transform: translateX(8%) rotate(42deg);
+        }
+
+        .tulip-wrap.opened .petal.center {
+            transform: translateX(-50%) translateY(-22px) scaleY(0.94);
+        }
+
+        .tulip-wrap.opened .petal.left {
+            transform: translateX(-118%) rotate(-66deg) translateY(-10px);
+        }
+
+        .tulip-wrap.opened .petal.right {
+            transform: translateX(18%) rotate(66deg) translateY(-10px);
+        }
+
+        .tulip-wrap.opened .petal.back-left {
+            transform: translateX(-128%) rotate(-82deg) translateY(-8px);
+            opacity: 0.72;
+        }
+
+        .tulip-wrap.opened .petal.back-right {
+            transform: translateX(28%) rotate(82deg) translateY(-8px);
+            opacity: 0.72;
+        }
+
+        .counter-wrap {
+            display: grid;
+            gap: 18px;
+            justify-items: center;
+        }
+
+        .counter-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(47, 74, 62, 0.1);
+            box-shadow: 0 12px 30px rgba(47, 74, 62, 0.08);
+        }
+
+        .counter-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid rgba(47, 74, 62, 0.12);
+            background: white;
+            color: var(--forest);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .counter-value {
+            min-width: 82px;
+            text-align: center;
+            font-size: clamp(2.7rem, 8vw, 4rem);
+            color: var(--forest);
+            font-weight: 700;
+        }
+
+        .summary-card {
+            padding: 24px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(47, 74, 62, 0.08);
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .summary-label {
+            color: rgba(47, 74, 62, 0.72);
+        }
+
+        .summary-value {
+            text-align: right;
+            color: var(--forest);
+            font-weight: 600;
+        }
+
+        .map-link {
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .map-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(156, 175, 154, 0.2);
+            margin-right: 8px;
+            font-size: 0.82rem;
+        }
+
+        .party-piece {
+            position: absolute;
+            width: 10px;
+            height: 18px;
+            border-radius: 999px;
+            opacity: 0;
+            box-shadow: 0 0 20px rgba(47, 74, 62, 0.08);
+            animation: partyBurst 1100ms ease-out forwards;
+        }
+
+        .party-butterfly {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: butterflyBurst 2200ms ease-out forwards;
+        }
+
+        @keyframes fadeLift {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes partyBurst {
+            0% {
+                transform: translate3d(0, 0, 0) scale(0.3);
+                opacity: 0;
+            }
+            18% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--rot)) scale(1.15);
+                opacity: 0;
+            }
+        }
+
+        @keyframes butterflyBurst {
+            0% {
+                transform: translate3d(0, 0, 0) scale(0.6) rotate(-8deg);
+                opacity: 0;
+            }
+            18% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate3d(var(--dx), var(--dy), 0) scale(1.1) rotate(var(--rot));
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .page {
+                min-height: auto;
+                padding: 28px 18px;
+            }
+
+            .center-stack,
+            .hero {
+                min-height: auto;
+            }
+
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+
+            .couple-signature {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .signature-side.left,
+            .signature-side.right {
+                justify-items: center;
+                text-align: center;
+            }
+
+            .heart-stack {
+                gap: 10px;
+            }
+
+            .heart-stack::before,
+            .heart-stack::after {
+                width: 92px;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, rgba(47, 74, 62, 0.5), transparent);
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 10px;
+            }
+
+            .shell {
+                border-radius: 24px;
+            }
+
+            .shell::before {
+                inset: 10px;
+                border-radius: 18px;
+            }
+
+            .page {
+                padding: 24px 14px;
+            }
+
+            .detail-grid,
+            .countdown-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+
+            .detail-card,
+            .countdown-card {
+                width: 100%;
+                max-width: 420px;
+            }
+
+            .countdown-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                justify-items: stretch;
+            }
+
+            .countdown-card {
+                max-width: none;
+            }
+
+            .summary-row {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .summary-value {
+                text-align: left;
+            }
+
+            .heart {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .countdown-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="effectLayer" class="effect-layer" aria-hidden="true"></div>
+
+    <audio id="inviteMusic" loop>
+        <source src="mysong.mp3" type="audio/mpeg">
+    </audio>
+
+    <main class="shell">
+        <section id="page-flower" class="page active">
+            <div class="center-stack">
+                <div>
+                    <div class="ornament"></div>
+                    <div class="eyebrow">A Wedding Invitation</div>
+                    <h2><span class="romantic">Blooming</span> Into A Beautiful Day</h2>
+                </div>
+
+                <div class="tulip-stage">
+                    <div id="tulipWrap" class="tulip-wrap">
+                        <div class="bud">
+                            <div class="petal back-left"></div>
+                            <div class="petal back-right"></div>
+                            <div class="petal left"></div>
+                            <div class="petal right"></div>
+                            <div class="petal center"></div>
+                        </div>
+                        <div class="leaf left"></div>
+                        <div class="leaf right"></div>
+                        <div class="stem"></div>
+                    </div>
+
+                    <p class="description">
+                        A tulip is waiting to open. Press the button below to reveal the invitation with a soft romantic animation.
+                    </p>
+
+                    <div class="actions" style="max-width: 240px; margin: 0 auto;">
+                        <button class="btn btn-open" type="button" onclick="openInvitation()">Open</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-invite" class="page">
+            <div class="hero">
+                <div>
+                    <div class="ornament"></div>
+                    <div class="eyebrow">Request The Honor Of Your Presence</div>
+                    <h1><span class="romantic">Wedding</span> Invitation</h1>
+                    <p class="subline">With love, joy and heartfelt duas, you are warmly invited to celebrate with us.</p>
+                </div>
+
+                <div class="couple-signature">
+                    <div class="signature-side left">
+                        <div class="signature-name">Qasim</div>
+                        <div class="signature-rule"></div>
+                        <div class="signature-rule short"></div>
+                        <div class="signature-family">
+                            Son of Abu Qasim and khadhija
+                        </div>
+                    </div>
+                    <div class="heart-stack">
+                        <span class="heart">♥</span>
+                    </div>
+                    <div class="signature-side right">
+                        <div class="signature-name">Ayesha</div>
+                        <div class="signature-rule"></div>
+                        <div class="signature-rule short"></div>
+                        <div class="signature-family">
+                            Daughter of Ahmad and Fathima
+                        </div>
+                    </div>
+                </div>
+
+                <p class="description">
+                    We request the honour of your presence at the wedding.
+                </p>
+
+                <div class="detail-grid">
+                    <article class="detail-card">
+                        <span class="detail-label">Ceremony Date</span>
+                        <div class="detail-value">september 07, 2026</div>
+                        <div class="fine-note">We expect your prsence on this wondurful day</div>
+                    </article>
+                    <article class="detail-card">
+                        <span class="detail-label">Venue</span>
+                        <div class="detail-value">Medina Al Munawwara<br>Quba Masjid</div>
+                    </article>
+                    <article class="detail-card">
+                        <span class="detail-label">Location Note</span>
+                        <div class="detail-value">Please join us at the blessed venue and keep us in your prayers.</div>
+                    </article>
+                </div>
+
+                <div>
+                    <div class="ornament"></div>
+                    <div class="eyebrow">Countdown</div>
+                    <div class="countdown-grid">
+                        <article class="countdown-card">
+                            <span id="days" class="countdown-number">0</span>
+                            <div class="countdown-label">Days</div>
+                        </article>
+                        <article class="countdown-card">
+                            <span id="hours" class="countdown-number">0</span>
+                            <div class="countdown-label">Hours</div>
+                        </article>
+                        <article class="countdown-card">
+                            <span id="minutes" class="countdown-number">0</span>
+                            <div class="countdown-label">Minutes</div>
+                        </article>
+                        <article class="countdown-card">
+                            <span id="seconds" class="countdown-number">0</span>
+                            <div class="countdown-label">Seconds</div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="actions two-col">
+                    <button class="btn btn-attend" type="button" onclick="handleAttend()">In sha Allah I will attend</button>
+                    <button class="btn btn-decline" type="button" onclick="handleDecline()">Unfortunately I can't attend</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-attend" class="page">
+            <div class="center-stack">
+                <div>
+                    <div class="ornament"></div>
+                    <div class="eyebrow">Your Attendence</div>
+                    <h2>Your Attendence</h2>
+                </div>
+
+                <p class="supporting">
+                    Please choose how many family members will be present, then confirm your attendance.
+                </p>
+
+                <div class="counter-wrap">
+                    <div class="counter-box">
+                        <button class="counter-btn" type="button" aria-label="Decrease family count" onclick="changeGuests(-1)">-</button>
+                        <div id="guestCount" class="counter-value">1</div>
+                        <button class="counter-btn" type="button" aria-label="Increase family count" onclick="changeGuests(1)">+</button>
+                    </div>
+                </div>
+
+                <div class="actions" style="max-width: 420px; margin: 0 auto; width: 100%;">
+                    <button id="confirmButton" class="btn btn-confirm" type="button" onclick="confirmAttendance()">Confirm Attendance</button>
+                    <button class="btn btn-ghost" type="button" onclick="showPage('page-invite')">Back</button>
+                </div>
+                <p id="submitStatus" class="fine-note" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <section id="page-confirmed" class="page">
+            <div class="center-stack">
+                <div>
+                    <div class="ornament"></div>
+                    <div class="eyebrow">Confirmed</div>
+                    <h2><span class="romantic">Thank You</span> For Your Response</h2>
+                </div>
+
+                <p class="description">
+                    Your response has been recorded. We look forward to celebrating with you, in sha Allah.
+                </p>
+
+                <div class="summary-card">
+                    <div class="summary-row">
+                        <span class="summary-label">Couple</span>
+                        <span class="summary-value">qasim ♥ ayesha</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Response</span>
+                        <span class="summary-value">In sha Allah, I will attend</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Members Attending</span>
+                        <span id="summaryCount" class="summary-value">1 member</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Date</span>
+                        <span class="summary-value">February 30, 2027</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Venue</span>
+                        <span class="summary-value">Medina Al Munawwara, Quba Masjid</span>
+                    </div>
+                </div>
+
+                <div class="actions" style="max-width: 430px; margin: 0 auto; width: 100%;">
+                    <a class="map-link btn btn-map" href="https://www.google.com/maps/search/?api=1&query=Quba+Masjid+Medina+Al+Munawwara" target="_blank" rel="noopener noreferrer">
+                        <span class="map-icon">📍</span>
+                        Location
+                    </a>
+                    <button class="btn btn-ghost" type="button" onclick="showPage('page-invite')">Return To Invitation</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-declined" class="page">
+            <div class="center-stack">
+                <div>
+                    <div class="ornament"></div>
+                    <div class="eyebrow">We Will Miss You</div>
+                    <h2><span class="romantic">Your Prayers</span> Mean A Lot To Us</h2>
+                </div>
+
+                <p class="description">
+                    It is truly sad not to have you with us on this special day. Please include us in your prayers and duas.
+                </p>
+
+                <div class="summary-card">
+                    <div class="summary-row">
+                        <span class="summary-label">Response</span>
+                        <span class="summary-value">Unfortunately I can't attend</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Couple</span>
+                        <span class="summary-value">qasim ♥ ayesha</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Venue</span>
+                        <span class="summary-value">Medina Al Munawwara, Quba Masjid</span>
+                    </div>
+                </div>
+
+                <div class="actions" style="max-width: 420px; margin: 0 auto; width: 100%;">
+                    <button class="btn btn-ghost" type="button" onclick="showPage('page-invite')">Return To Invitation</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const pages = document.querySelectorAll(".page");
+        const effectLayer = document.getElementById("effectLayer");
+        const music = document.getElementById("inviteMusic");
+        const tulipWrap = document.getElementById("tulipWrap");
+        const guestCountElement = document.getElementById("guestCount");
+        const summaryCountElement = document.getElementById("summaryCount");
+        const confirmButton = document.getElementById("confirmButton");
+        const submitStatus = document.getElementById("submitStatus");
+        const countdownIds = {
+            days: document.getElementById("days"),
+            hours: document.getElementById("hours"),
+            minutes: document.getElementById("minutes"),
+            seconds: document.getElementById("seconds")
+        };
+
+        const minGuests = 1;
+        const maxGuests = 20;
+        let guestCount = 1;
+        const weddingDate = new Date("2027-03-02T18:00:00");
+
+        function showPage(pageId) {
+            pages.forEach((page) => page.classList.remove("active"));
+            document.getElementById(pageId).classList.add("active");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function openInvitation() {
+            tulipWrap.classList.add("opened");
+            setTimeout(() => {
+                showPage("page-invite");
+            }, 1050);
+        }
+
+        function updateGuestCount() {
+            guestCountElement.textContent = guestCount;
+        }
+
+        function changeGuests(delta) {
+            const nextCount = guestCount + delta;
+            if (nextCount < minGuests || nextCount > maxGuests) {
+                return;
+            }
+            guestCount = nextCount;
+            updateGuestCount();
+        }
+
+        function handleAttend() {
+            music.play().catch(() => {
+                console.log("Playback needs user interaction.");
+            });
+            launchAttendPops();
+            showPage("page-attend");
+        }
+
+        async function confirmAttendance() {
+            const memberLabel = guestCount === 1 ? "1 member" : guestCount + " members";
+            submitStatus.textContent = "";
+            confirmButton.disabled = true;
+
+            try {
+                const response = await fetch("/api/rsvp", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        attending: true,
+                        members: guestCount
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Unable to send RSVP");
+                }
+
+                summaryCountElement.textContent = memberLabel;
+                submitStatus.textContent = "";
+                showPage("page-confirmed");
+            } catch (error) {
+                console.error(error);
+                summaryCountElement.textContent = memberLabel;
+                submitStatus.textContent = "";
+                showPage("page-confirmed");
+            } finally {
+                confirmButton.disabled = false;
+            }
+        }
+
+        function handleDecline() {
+            music.pause();
+            music.currentTime = 0;
+            showPage("page-declined");
+        }
+
+        function updateCountdown() {
+            const difference = weddingDate.getTime() - Date.now();
+
+            if (difference <= 0) {
+                countdownIds.days.textContent = "0";
+                countdownIds.hours.textContent = "0";
+                countdownIds.minutes.textContent = "0";
+                countdownIds.seconds.textContent = "0";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((difference / (1000 * 60)) % 60);
+            const seconds = Math.floor((difference / 1000) % 60);
+
+            countdownIds.days.textContent = String(days);
+            countdownIds.hours.textContent = String(hours).padStart(2, "0");
+            countdownIds.minutes.textContent = String(minutes).padStart(2, "0");
+            countdownIds.seconds.textContent = String(seconds).padStart(2, "0");
+        }
+
+        function launchAttendPops() {
+            createPartyBurst("left");
+            createPartyBurst("right");
+        }
+
+        function createPartyBurst(side) {
+            const fromLeft = side === "left";
+            const leftBase = fromLeft ? 6 + Math.random() * 10 : 84 + Math.random() * 10;
+
+            for (let i = 0; i < 18; i += 1) {
+                const piece = document.createElement("span");
+                piece.className = "party-piece";
+                piece.style.left = leftBase + "vw";
+                piece.style.top = 30 + Math.random() * 36 + "vh";
+                piece.style.background = i % 2 === 0 ? "#7fbf7a" : "#d8c88d";
+                piece.style.setProperty("--dx", (fromLeft ? 50 + Math.random() * 120 : -50 - Math.random() * 120) + "px");
+                piece.style.setProperty("--dy", (-110 + Math.random() * 220) + "px");
+                piece.style.setProperty("--rot", (Math.random() * 540 - 270) + "deg");
+                piece.style.animationDelay = i * 28 + "ms";
+                effectLayer.appendChild(piece);
+                setTimeout(() => piece.remove(), 1300);
+            }
+
+            for (let i = 0; i < 5; i += 1) {
+                const butterfly = document.createElement("span");
+                butterfly.className = "party-butterfly";
+                butterfly.textContent = "🦋";
+                butterfly.style.left = leftBase + "vw";
+                butterfly.style.top = 34 + Math.random() * 28 + "vh";
+                butterfly.style.setProperty("--dx", (fromLeft ? 80 + Math.random() * 120 : -80 - Math.random() * 120) + "px");
+                butterfly.style.setProperty("--dy", (-70 - Math.random() * 170) + "px");
+                butterfly.style.setProperty("--rot", (fromLeft ? 25 : -25) + Math.random() * 30 + "deg");
+                butterfly.style.animationDelay = i * 140 + "ms";
+                effectLayer.appendChild(butterfly);
+                setTimeout(() => butterfly.remove(), 2400);
+            }
+        }
+
+        updateGuestCount();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
